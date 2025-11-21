@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index Page</title>
+    <style>
+        .task-box {
+            border: 2px solid #000;
+            padding: 10px;
+            margin: 10px 0;
+            width: 300px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <p>-------------------------------------------------
+        -----------------------</p>
+
+
+    <h1>Add Task </h1>
+
+    <input 
+    style="padding: 10px; height: 40px; width: 180px;font-size:18px"
+    id="id1" type="text" placeholder="Enter task title" />
+
+    <input
+    style="padding: 10px; height: 40px; width: 180px;font-size:18px"
+    id="id2" type="text" placeholder="Enter description" />
+
+    <button 
+    style="height: 40px; width: 100px;font-size: 16px;cursor: pointer;"
+    id="id3">Submit
+    </button>
+
+    <div id="tasksContainer"></div>
+
+
+    <a href="login.html">
+        <button style="height: 40px; width: 100px; font-size: 16px; cursor: pointer;margin-top:20px">
+            Logout
+        </button>
+    </a>
+
+
+
+
+    <script>
+        const elem1 = document.getElementById("id1");
+        const elem2 = document.getElementById("id2");
+        const elem3 = document.getElementById("id3");
+        const tasksContainer = document.getElementById("tasksContainer");
+
+        let taskCount = 0;
+
+        elem3.addEventListener("click", function() {
+            const title = elem1.value;
+            const desc = elem2.value;
+
+            if(!title || !desc) {
+                alert("Please fill both title and description!");
+                return;
+            }
+
+            taskCount++;
+
+            // Create a new div for this task
+            const taskDiv = document.createElement("div");
+            taskDiv.classList.add("task-box");
+
+            // Add content to div
+            taskDiv.innerHTML = `
+                <p><strong>Task ${taskCount}</strong></p>
+                <p>Title: ${title}</p>
+                <p>Description: ${desc}</p>
+            `;
+
+            // Append taskDiv to container
+            tasksContainer.appendChild(taskDiv);
+
+            // Clear input fields
+            elem1.value = "";
+            elem2.value = "";
+        });
+    </script>
+</body>
+</html>

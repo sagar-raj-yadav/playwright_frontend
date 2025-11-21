@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+</head>
+<body>
+
+<h1>This is signup page</h1>
+
+    <input
+        style="padding: 10px; height: 40px; width: 180px;font-size:18px" 
+        type="text"
+        id="username"
+        placeholder="Enter username"
+    />
+
+    <input
+        style="padding: 10px; height: 40px; width: 180px;font-size:18px"
+        type="password"
+        id="password"
+        placeholder="Enter password"
+    />
+
+    <input
+        style="padding: 10px; height: 40px; width: 180px;font-size:18px"
+        type="password"
+        id="verifyPassword"
+        placeholder="Verify password"
+    />
+
+    <button
+        class="button1"
+        style="height: 40px; width: 100px;font-size: 16px;cursor: pointer;"
+        onclick="signup()"
+    >
+        Signup
+    </button>
+
+    <button
+        style="height: 30px; width: 100px;font-size: 16px;cursor: pointer;"
+        onclick="goToLogin()"
+    >
+        Go to Login
+    </button>
+
+</body>
+
+<script>
+function signup() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const verifyPass = document.getElementById("verifyPassword").value;
+
+    if (!user || !pass || !verifyPass) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    if (pass !== verifyPass) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    // All checks passed ,then  go to login page
+    window.location.href = "login.html";
+}
+
+function goToLogin() {
+    window.location.href = "login.html";
+}
+</script>
+</html>
